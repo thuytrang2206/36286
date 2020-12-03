@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Manager_deviceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DETAIL_CHECK">
+          <Key>
+            <PropertyRef Name="ID_DETAIL" />
+          </Key>
+          <Property Name="ID_DETAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_DEVICE" Type="varchar" MaxLength="50" />
+          <Property Name="DATECHECK" Type="datetime" />
+          <Property Name="INFOCHECK" Type="text" />
+        </EntityType>
+        <EntityType Name="DEVICE">
+          <Key>
+            <PropertyRef Name="ID_DEVICE" />
+          </Key>
+          <Property Name="ID_DEVICE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPDATETIME" Type="datetime" />
+          <Property Name="DATEPLAN" Type="date" />
+          <Property Name="ENABLE" Type="bit" />
+          <Property Name="ID_GROUP" Type="varchar" MaxLength="50" />
+          <Property Name="ID_USER" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GROUP_DEVICE">
+          <Key>
+            <PropertyRef Name="ID_GROUP" />
+          </Key>
+          <Property Name="ID_GROUP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RULE">
+          <Key>
+            <PropertyRef Name="ID_RULE" />
+          </Key>
+          <Property Name="ID_RULE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_RULE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_DETAIL_CHECK_DEVICE">
+          <End Role="DEVICE" Type="Self.DEVICE" Multiplicity="0..1" />
+          <End Role="DETAIL_CHECK" Type="Self.DETAIL_CHECK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEVICE">
+              <PropertyRef Name="ID_DEVICE" />
+            </Principal>
+            <Dependent Role="DETAIL_CHECK">
+              <PropertyRef Name="ID_DEVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEVICE_GROUP_DEVICE">
+          <End Role="GROUP_DEVICE" Type="Self.GROUP_DEVICE" Multiplicity="0..1" />
+          <End Role="DEVICE" Type="Self.DEVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GROUP_DEVICE">
+              <PropertyRef Name="ID_GROUP" />
+            </Principal>
+            <Dependent Role="DEVICE">
+              <PropertyRef Name="ID_GROUP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEVICE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="DEVICE" Type="Self.DEVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="DEVICE">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_RULE">
+          <End Role="RULE" Type="Self.RULE" Multiplicity="0..1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RULE">
+              <PropertyRef Name="ID_RULE" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="ID_RULE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Manager_deviceModelStoreContainer">
+          <EntitySet Name="DETAIL_CHECK" EntityType="Self.DETAIL_CHECK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEVICE" EntityType="Self.DEVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GROUP_DEVICE" EntityType="Self.GROUP_DEVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RULE" EntityType="Self.RULE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DETAIL_CHECK_DEVICE" Association="Self.FK_DETAIL_CHECK_DEVICE">
+            <End Role="DEVICE" EntitySet="DEVICE" />
+            <End Role="DETAIL_CHECK" EntitySet="DETAIL_CHECK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEVICE_GROUP_DEVICE" Association="Self.FK_DEVICE_GROUP_DEVICE">
+            <End Role="GROUP_DEVICE" EntitySet="GROUP_DEVICE" />
+            <End Role="DEVICE" EntitySet="DEVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEVICE_USER" Association="Self.FK_DEVICE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="DEVICE" EntitySet="DEVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_RULE" Association="Self.FK_USER_RULE">
+            <End Role="RULE" EntitySet="RULE" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Manager_deviceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DETAIL_CHECK">
+          <Key>
+            <PropertyRef Name="ID_DETAIL" />
+          </Key>
+          <Property Name="ID_DETAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_DEVICE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATECHECK" Type="DateTime" Precision="3" />
+          <Property Name="INFOCHECK" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DEVICE" Relationship="Self.FK_DETAIL_CHECK_DEVICE" FromRole="DETAIL_CHECK" ToRole="DEVICE" />
+        </EntityType>
+        <EntityType Name="DEVICE">
+          <Key>
+            <PropertyRef Name="ID_DEVICE" />
+          </Key>
+          <Property Name="ID_DEVICE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATETIME" Type="DateTime" Precision="3" />
+          <Property Name="DATEPLAN" Type="DateTime" Precision="0" />
+          <Property Name="ENABLE" Type="Boolean" />
+          <Property Name="ID_GROUP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DETAIL_CHECK" Relationship="Self.FK_DETAIL_CHECK_DEVICE" FromRole="DEVICE" ToRole="DETAIL_CHECK" />
+          <NavigationProperty Name="GROUP_DEVICE" Relationship="Self.FK_DEVICE_GROUP_DEVICE" FromRole="DEVICE" ToRole="GROUP_DEVICE" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_DEVICE_USER" FromRole="DEVICE" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="GROUP_DEVICE">
+          <Key>
+            <PropertyRef Name="ID_GROUP" />
+          </Key>
+          <Property Name="ID_GROUP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DEVICEs" Relationship="Self.FK_DEVICE_GROUP_DEVICE" FromRole="GROUP_DEVICE" ToRole="DEVICE" />
+        </EntityType>
+        <EntityType Name="RULE">
+          <Key>
+            <PropertyRef Name="ID_RULE" />
+          </Key>
+          <Property Name="ID_RULE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="USERs" Relationship="Self.FK_USER_RULE" FromRole="RULE" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_RULE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DEVICEs" Relationship="Self.FK_DEVICE_USER" FromRole="USER" ToRole="DEVICE" />
+          <NavigationProperty Name="RULE" Relationship="Self.FK_USER_RULE" FromRole="USER" ToRole="RULE" />
+        </EntityType>
+        <Association Name="FK_DETAIL_CHECK_DEVICE">
+          <End Role="DEVICE" Type="Self.DEVICE" Multiplicity="0..1" />
+          <End Role="DETAIL_CHECK" Type="Self.DETAIL_CHECK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEVICE">
+              <PropertyRef Name="ID_DEVICE" />
+            </Principal>
+            <Dependent Role="DETAIL_CHECK">
+              <PropertyRef Name="ID_DEVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEVICE_GROUP_DEVICE">
+          <End Role="GROUP_DEVICE" Type="Self.GROUP_DEVICE" Multiplicity="0..1" />
+          <End Role="DEVICE" Type="Self.DEVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GROUP_DEVICE">
+              <PropertyRef Name="ID_GROUP" />
+            </Principal>
+            <Dependent Role="DEVICE">
+              <PropertyRef Name="ID_GROUP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEVICE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="DEVICE" Type="Self.DEVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="DEVICE">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_RULE">
+          <End Role="RULE" Type="Self.RULE" Multiplicity="0..1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RULE">
+              <PropertyRef Name="ID_RULE" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="ID_RULE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Manager_deviceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DETAIL_CHECK" EntityType="Self.DETAIL_CHECK" />
+          <EntitySet Name="DEVICEs" EntityType="Self.DEVICE" />
+          <EntitySet Name="GROUP_DEVICE" EntityType="Self.GROUP_DEVICE" />
+          <EntitySet Name="RULEs" EntityType="Self.RULE" />
+          <EntitySet Name="USERs" EntityType="Self.USER" />
+          <AssociationSet Name="FK_DETAIL_CHECK_DEVICE" Association="Self.FK_DETAIL_CHECK_DEVICE">
+            <End Role="DEVICE" EntitySet="DEVICEs" />
+            <End Role="DETAIL_CHECK" EntitySet="DETAIL_CHECK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEVICE_GROUP_DEVICE" Association="Self.FK_DEVICE_GROUP_DEVICE">
+            <End Role="GROUP_DEVICE" EntitySet="GROUP_DEVICE" />
+            <End Role="DEVICE" EntitySet="DEVICEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEVICE_USER" Association="Self.FK_DEVICE_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="DEVICE" EntitySet="DEVICEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_RULE" Association="Self.FK_USER_RULE">
+            <End Role="RULE" EntitySet="RULEs" />
+            <End Role="USER" EntitySet="USERs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Manager_deviceModelStoreContainer" CdmEntityContainer="Manager_deviceEntities">
+          <EntitySetMapping Name="DETAIL_CHECK">
+            <EntityTypeMapping TypeName="Manager_deviceModel.DETAIL_CHECK">
+              <MappingFragment StoreEntitySet="DETAIL_CHECK">
+                <ScalarProperty Name="ID_DETAIL" ColumnName="ID_DETAIL" />
+                <ScalarProperty Name="ID_DEVICE" ColumnName="ID_DEVICE" />
+                <ScalarProperty Name="DATECHECK" ColumnName="DATECHECK" />
+                <ScalarProperty Name="INFOCHECK" ColumnName="INFOCHECK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEVICEs">
+            <EntityTypeMapping TypeName="Manager_deviceModel.DEVICE">
+              <MappingFragment StoreEntitySet="DEVICE">
+                <ScalarProperty Name="ID_DEVICE" ColumnName="ID_DEVICE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="UPDATETIME" ColumnName="UPDATETIME" />
+                <ScalarProperty Name="DATEPLAN" ColumnName="DATEPLAN" />
+                <ScalarProperty Name="ENABLE" ColumnName="ENABLE" />
+                <ScalarProperty Name="ID_GROUP" ColumnName="ID_GROUP" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GROUP_DEVICE">
+            <EntityTypeMapping TypeName="Manager_deviceModel.GROUP_DEVICE">
+              <MappingFragment StoreEntitySet="GROUP_DEVICE">
+                <ScalarProperty Name="ID_GROUP" ColumnName="ID_GROUP" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RULEs">
+            <EntityTypeMapping TypeName="Manager_deviceModel.RULE">
+              <MappingFragment StoreEntitySet="RULE">
+                <ScalarProperty Name="ID_RULE" ColumnName="ID_RULE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="Manager_deviceModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ID_RULE" ColumnName="ID_RULE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
