@@ -35,7 +35,7 @@ namespace Manager_device
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frmdevice frd = new frmdevice();
+            frmdevice frd = new frmdevice(label2.Text);
             this.Hide();
             frd.ShowDialog();
         }
@@ -52,6 +52,13 @@ namespace Manager_device
             frmrules frmr = new frmrules();
             this.Hide();
             frmr.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FrmDetail frmd = new FrmDetail();
+            this.Hide();
+            frmd.ShowDialog();
         }
     }
 }

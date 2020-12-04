@@ -51,22 +51,26 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gROUP_DEVICETableAdapter1 = new Manager_device.Manager_deviceDataSet2TableAdapters.GROUP_DEVICETableAdapter();
-            this.cbbsearch_group = new System.Windows.Forms.ComboBox();
             this.gROUPDEVICEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.gROUPDEVICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.manager_deviceDataSet3 = new Manager_device.Manager_deviceDataSet3();
+            this.gROUPDEVICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbbsearch_group = new System.Windows.Forms.ComboBox();
+            this.gROUPDEVICEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvdevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(751, 226);
+            this.btnExit.Location = new System.Drawing.Point(941, 225);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(58, 23);
             this.btnExit.TabIndex = 0;
@@ -79,14 +83,14 @@
             this.dtgvdevice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvdevice.Location = new System.Drawing.Point(12, 12);
             this.dtgvdevice.Name = "dtgvdevice";
-            this.dtgvdevice.Size = new System.Drawing.Size(445, 208);
+            this.dtgvdevice.Size = new System.Drawing.Size(622, 208);
             this.dtgvdevice.TabIndex = 1;
             this.dtgvdevice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvdevice_CellClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(476, 13);
+            this.label1.Location = new System.Drawing.Point(666, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 2;
@@ -95,7 +99,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(479, 43);
+            this.label2.Location = new System.Drawing.Point(669, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 3;
@@ -104,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(475, 102);
+            this.label4.Location = new System.Drawing.Point(665, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 5;
@@ -113,7 +117,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(479, 126);
+            this.label5.Location = new System.Drawing.Point(669, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 6;
@@ -122,7 +126,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(476, 162);
+            this.label6.Location = new System.Drawing.Point(666, 161);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 7;
@@ -130,7 +134,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(567, 43);
+            this.txtName.Location = new System.Drawing.Point(757, 42);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 9;
@@ -141,21 +145,21 @@
             this.cbbENABLE.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.cbbENABLE.Location = new System.Drawing.Point(567, 162);
+            this.cbbENABLE.Location = new System.Drawing.Point(757, 161);
             this.cbbENABLE.Name = "cbbENABLE";
             this.cbbENABLE.Size = new System.Drawing.Size(121, 21);
             this.cbbENABLE.TabIndex = 11;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(565, 102);
+            this.dateTimePicker2.Location = new System.Drawing.Point(755, 101);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 13;
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(567, 13);
+            this.txtId.Location = new System.Drawing.Point(757, 12);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 8;
@@ -165,7 +169,7 @@
             this.cbbID_GROUP.DataSource = this.gROUPDEVICEBindingSource3;
             this.cbbID_GROUP.DisplayMember = "ID_GROUP";
             this.cbbID_GROUP.FormattingEnabled = true;
-            this.cbbID_GROUP.Location = new System.Drawing.Point(574, 131);
+            this.cbbID_GROUP.Location = new System.Drawing.Point(755, 134);
             this.cbbID_GROUP.Name = "cbbID_GROUP";
             this.cbbID_GROUP.Size = new System.Drawing.Size(121, 21);
             this.cbbID_GROUP.TabIndex = 14;
@@ -186,7 +190,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(479, 226);
+            this.btnAdd.Location = new System.Drawing.Point(669, 225);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 15;
@@ -196,7 +200,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(574, 226);
+            this.btnEdit.Location = new System.Drawing.Point(764, 225);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 16;
@@ -206,7 +210,7 @@
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(670, 226);
+            this.btnDel.Location = new System.Drawing.Point(860, 225);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(75, 23);
             this.btnDel.TabIndex = 17;
@@ -240,38 +244,60 @@
             // 
             this.gROUP_DEVICETableAdapter1.ClearBeforeFill = true;
             // 
-            // cbbsearch_group
-            // 
-            this.cbbsearch_group.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.gROUPDEVICEBindingSource1, "NAME", true));
-            this.cbbsearch_group.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gROUPDEVICEBindingSource1, "ID_GROUP", true));
-            this.cbbsearch_group.DataSource = this.gROUPDEVICEBindingSource1;
-            this.cbbsearch_group.DisplayMember = "NAME";
-            this.cbbsearch_group.FormattingEnabled = true;
-            this.cbbsearch_group.Location = new System.Drawing.Point(52, 229);
-            this.cbbsearch_group.Name = "cbbsearch_group";
-            this.cbbsearch_group.Size = new System.Drawing.Size(121, 21);
-            this.cbbsearch_group.TabIndex = 23;
-            this.cbbsearch_group.ValueMember = "ID_GROUP";
-            this.cbbsearch_group.SelectedIndexChanged += new System.EventHandler(this.cbbsearch_group_SelectedIndexChanged_1);
-            // 
             // gROUPDEVICEBindingSource1
             // 
             this.gROUPDEVICEBindingSource1.DataSource = typeof(Manager_device.GROUP_DEVICE);
-            // 
-            // gROUPDEVICEBindingSource
-            // 
-            this.gROUPDEVICEBindingSource.DataSource = typeof(Manager_device.GROUP_DEVICE);
             // 
             // manager_deviceDataSet3
             // 
             this.manager_deviceDataSet3.DataSetName = "Manager_deviceDataSet3";
             this.manager_deviceDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // gROUPDEVICEBindingSource
+            // 
+            this.gROUPDEVICEBindingSource.DataSource = typeof(Manager_device.GROUP_DEVICE);
+            // 
+            // cbbsearch_group
+            // 
+            this.cbbsearch_group.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gROUPDEVICEBindingSource2, "ID_GROUP", true));
+            this.cbbsearch_group.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.gROUPDEVICEBindingSource2, "NAME", true));
+            this.cbbsearch_group.DataSource = this.gROUPDEVICEBindingSource2;
+            this.cbbsearch_group.DisplayMember = "NAME";
+            this.cbbsearch_group.FormattingEnabled = true;
+            this.cbbsearch_group.Location = new System.Drawing.Point(43, 228);
+            this.cbbsearch_group.Name = "cbbsearch_group";
+            this.cbbsearch_group.Size = new System.Drawing.Size(121, 21);
+            this.cbbsearch_group.TabIndex = 23;
+            this.cbbsearch_group.ValueMember = "ID_GROUP";
+            this.cbbsearch_group.SelectedIndexChanged += new System.EventHandler(this.cbbsearch_group_SelectedIndexChanged);
+            // 
+            // gROUPDEVICEBindingSource2
+            // 
+            this.gROUPDEVICEBindingSource2.DataSource = typeof(Manager_device.GROUP_DEVICE);
+            // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(764, 195);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(100, 20);
+            this.txtUser.TabIndex = 24;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(672, 198);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "USER";
+            // 
             // frmdevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 270);
+            this.ClientSize = new System.Drawing.Size(1044, 270);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtUser);
             this.Controls.Add(this.cbbsearch_group);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label3);
@@ -298,8 +324,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,9 +356,12 @@
         private System.Windows.Forms.Label label3;
         private Manager_deviceDataSet2 manager_deviceDataSet2;
         private Manager_deviceDataSet2TableAdapters.GROUP_DEVICETableAdapter gROUP_DEVICETableAdapter1;
-        private System.Windows.Forms.ComboBox cbbsearch_group;
         private System.Windows.Forms.BindingSource gROUPDEVICEBindingSource;
         private System.Windows.Forms.BindingSource gROUPDEVICEBindingSource1;
         private Manager_deviceDataSet3 manager_deviceDataSet3;
+        private System.Windows.Forms.ComboBox cbbsearch_group;
+        private System.Windows.Forms.BindingSource gROUPDEVICEBindingSource2;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.Label label7;
     }
 }

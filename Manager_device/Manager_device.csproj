@@ -69,6 +69,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetail.Designer.cs">
+      <DependentUpon>FrmDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmdevice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Manager_deviceDataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Manager_deviceDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Manager_deviceDataSet4.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Manager_deviceModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -147,6 +158,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetail.resx">
+      <DependentUpon>FrmDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmdevice.resx">
       <DependentUpon>frmdevice.cs</DependentUpon>
@@ -219,6 +233,17 @@
     </None>
     <None Include="Manager_deviceDataSet3.xss">
       <DependentUpon>Manager_deviceDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Manager_deviceDataSet4.xsc">
+      <DependentUpon>Manager_deviceDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Manager_deviceDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Manager_deviceDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Manager_deviceDataSet4.xss">
+      <DependentUpon>Manager_deviceDataSet4.xsd</DependentUpon>
     </None>
     <None Include="Manager_deviceModel.edmx.diagram">
       <DependentUpon>Manager_deviceModel.edmx</DependentUpon>

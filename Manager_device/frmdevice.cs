@@ -19,21 +19,29 @@ namespace Manager_device
         public frmdevice()
         {
             InitializeComponent();
-            
+            binds = new BindingSource();
+            Form1 frm = new Form1();
+            Load_Data();
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
+        string strname;
+        public frmdevice(string giatri) : this()
         {
-            frmMain frm = new frmMain();
-            this.Hide();
-            frm.ShowDialog();
+            strname = giatri;
+            txtUser.Text = strname;
+        }
+       void Clear()
+        {
+            txtId.Text = "";
+            txtName.Text = "";
+            cbbENABLE.Text = "";
+            cbbID_GROUP.Text = "";
         }
         void Load_Data()
         {
-            var listdevice = from d in db.DEVICEs select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ENABLE, d.USER };
+            var listdevice = from d in db.DEVICEs select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ENABLE, d.ID_USER };
             binds.DataSource = listdevice.ToList();
+            //var temp = listdevice.ToList();
             dtgvdevice.DataSource = binds;
-
         }
   
         private void frmdevice_Load(object sender, EventArgs e)
@@ -42,10 +50,15 @@ namespace Manager_device
             this.gROUP_DEVICETableAdapter1.Fill(this.manager_deviceDataSet2.GROUP_DEVICE);
             // TODO: This line of code loads data into the 'manager_deviceDataSet.GROUP_DEVICE' table. You can move, or remove it, as needed.
             this.gROUP_DEVICETableAdapter.Fill(this.manager_deviceDataSet.GROUP_DEVICE);
-            binds = new BindingSource();
-            Form1 frm = new Form1();
-            Load_Data();
-           
+            cbbsearch_group.DataSource = (from g in db.GROUP_DEVICE select new { g.NAME }).ToList();
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            frmMain frm = new frmMain();
+            this.Hide();
+            frm.ShowDialog();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -58,6 +71,7 @@ namespace Manager_device
                 dev.DATEPLAN = DateTime.Parse(dateTimePicker2.Value.ToString());
                 dev.ID_GROUP = cbbID_GROUP.Text;
                 dev.ENABLE = bool.Parse(cbbENABLE.Text);
+                dev.ID_USER = txtUser.Text;
                 db.DEVICEs.Add(dev);
                 db.SaveChanges();
                 Load_Data();
@@ -67,6 +81,7 @@ namespace Manager_device
                 Console.Write(ex.ToString());
             }
         }
+
         void Edit()
         {
             string id = dtgvdevice.SelectedCells[0].OwningRow.Cells["ID_DEVICE"].Value.ToString();
@@ -83,6 +98,7 @@ namespace Manager_device
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Edit();
+            Clear();
         }
         private void dtgvdevice_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -94,6 +110,7 @@ namespace Manager_device
             dateTimePicker2.Value =DateTime.Parse(row.Cells[3].Value.ToString());
             cbbID_GROUP.Text = row.Cells[4].Value.ToString();
             cbbENABLE.Text = row.Cells[5].Value.ToString();
+            txtUser.Text = row.Cells[6].Value.ToString();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -105,35 +122,22 @@ namespace Manager_device
             Load_Data();
         }
 
-        
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
            var listdevice= from d in db.DEVICEs where(d.NAME.Contains(txtSearch.Text) )
                            select  new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ENABLE, d.USER };
             binds.DataSource = listdevice.ToList();
             dtgvdevice.DataSource = binds;
-          
         }
-        private void cbbsearch_group_SelectedIndexChanged_1(object sender, EventArgs e)
+
+        private void cbbsearch_group_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
-            var listdevice = from d in db.DEVICEs where (d.ID_GROUP == cbbsearch_group.SelectedIndex.ToString()) select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ENABLE, d.USER };
-            binds.DataSource = listdevice.ToList();
+            //var listdevice = from d in db.GROUP_DEVICE
+            //                 join g in db.DEVICEs on d.ID_GROUP equals g.ID_GROUP
+            //                 where (g.ID_GROUP == cbbsearch_group.SelectedIndex.ToString())
+            //                 select new { g.ID_DEVICE, g.NAME, g.UPDATETIME, g.DATEPLAN, g.ID_GROUP, g.ENABLE, g.USER };
+            //binds.DataSource = listdevice.ToList();
             dtgvdevice.DataSource = binds;
         }
-
-    //    private void fillByToolStripButton_Click(object sender, EventArgs e)
-    //    {
-    //        try
-    //        {
-    //            this.gROUP_DEVICETableAdapter.FillBy(this.manager_deviceDataSet.GROUP_DEVICE);
-    //        }
-    //        catch (System.Exception ex)
-    //        {
-    //            System.Windows.Forms.MessageBox.Show(ex.Message);
-    //        }
-
-    //    }
     }
 }
