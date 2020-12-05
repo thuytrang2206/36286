@@ -28,18 +28,13 @@ namespace Manager_device
             binds.DataSource = listdetail.ToList();
             dataGridView1.DataSource = binds;
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void FrmDetail_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'manager_deviceDataSet4.DEVICE' table. You can move, or remove it, as needed.
             this.dEVICETableAdapter.Fill(this.manager_deviceDataSet4.DEVICE);
 
         }
+       
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -50,6 +45,11 @@ namespace Manager_device
             db.DETAIL_CHECK.Add(det);
             db.SaveChanges();
             Load_Data();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

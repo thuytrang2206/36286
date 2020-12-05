@@ -118,7 +118,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "frmMain";
-            this.Text = "frmMain";
+            this.Text = "  ";
             this.ResumeLayout(false);
             this.PerformLayout();
 

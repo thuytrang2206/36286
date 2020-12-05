@@ -51,26 +51,29 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gROUP_DEVICETableAdapter1 = new Manager_device.Manager_deviceDataSet2TableAdapters.GROUP_DEVICETableAdapter();
-            this.gROUPDEVICEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.manager_deviceDataSet3 = new Manager_device.Manager_deviceDataSet3();
-            this.gROUPDEVICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbbsearch_group = new System.Windows.Forms.ComboBox();
             this.gROUPDEVICEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.txtUser = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.gROUPDEVICEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gROUPDEVICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvdevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(941, 225);
+            this.btnExit.Location = new System.Drawing.Point(12, 264);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(58, 23);
             this.btnExit.TabIndex = 0;
@@ -117,7 +120,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(669, 125);
+            this.label5.Location = new System.Drawing.Point(665, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 6;
@@ -190,7 +193,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(669, 225);
+            this.btnAdd.Location = new System.Drawing.Point(259, 264);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 15;
@@ -200,7 +203,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(764, 225);
+            this.btnEdit.Location = new System.Drawing.Point(178, 264);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 16;
@@ -210,7 +213,7 @@
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(860, 225);
+            this.btnDel.Location = new System.Drawing.Point(87, 264);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(75, 23);
             this.btnDel.TabIndex = 17;
@@ -244,18 +247,10 @@
             // 
             this.gROUP_DEVICETableAdapter1.ClearBeforeFill = true;
             // 
-            // gROUPDEVICEBindingSource1
-            // 
-            this.gROUPDEVICEBindingSource1.DataSource = typeof(Manager_device.GROUP_DEVICE);
-            // 
             // manager_deviceDataSet3
             // 
             this.manager_deviceDataSet3.DataSetName = "Manager_deviceDataSet3";
             this.manager_deviceDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // gROUPDEVICEBindingSource
-            // 
-            this.gROUPDEVICEBindingSource.DataSource = typeof(Manager_device.GROUP_DEVICE);
             // 
             // cbbsearch_group
             // 
@@ -264,7 +259,7 @@
             this.cbbsearch_group.DataSource = this.gROUPDEVICEBindingSource2;
             this.cbbsearch_group.DisplayMember = "NAME";
             this.cbbsearch_group.FormattingEnabled = true;
-            this.cbbsearch_group.Location = new System.Drawing.Point(43, 228);
+            this.cbbsearch_group.Location = new System.Drawing.Point(12, 227);
             this.cbbsearch_group.Name = "cbbsearch_group";
             this.cbbsearch_group.Size = new System.Drawing.Size(121, 21);
             this.cbbsearch_group.TabIndex = 23;
@@ -285,17 +280,52 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(672, 198);
+            this.label7.Location = new System.Drawing.Point(666, 195);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 25;
             this.label7.Text = "USER";
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(398, 264);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 26;
+            this.btnExport.Text = "Xuất file";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // gROUPDEVICEBindingSource1
+            // 
+            this.gROUPDEVICEBindingSource1.DataSource = typeof(Manager_device.GROUP_DEVICE);
+            // 
+            // gROUPDEVICEBindingSource
+            // 
+            this.gROUPDEVICEBindingSource.DataSource = typeof(Manager_device.GROUP_DEVICE);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(514, 264);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(395, 23);
+            this.progressBar.TabIndex = 27;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // frmdevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1044, 270);
+            this.ClientSize = new System.Drawing.Size(961, 303);
+            this.Controls.Add(this.progressBar);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.cbbsearch_group);
@@ -323,10 +353,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,5 +393,8 @@
         private System.Windows.Forms.BindingSource gROUPDEVICEBindingSource2;
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

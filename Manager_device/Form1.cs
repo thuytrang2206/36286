@@ -15,7 +15,6 @@ namespace Manager_device
         public Form1()
         {
             InitializeComponent();
-           
         }
         Manager_deviceEntities db = new Manager_deviceEntities();
         private void button1_Click(object sender, EventArgs e)
@@ -42,5 +41,7 @@ namespace Manager_device
             }
 
         }
+
+      
     }
 }
