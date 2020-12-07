@@ -87,7 +87,11 @@ namespace Manager_device
         private void btnDel_Click(object sender, EventArgs e)
         {
             string id = txtID.Text;
-            gr = db.GROUP_DEVICE.Where(p => p.ID_GROUP == id).SingleOrDefault();
+            gr = db.GROUP_DEVICE.First(p => p.ID_GROUP == id) ;
+            foreach(var d in db.DEVICEs.Where(f => f.ID_GROUP == id))
+            {
+                db.DEVICEs.Remove(d);
+            }
             db.GROUP_DEVICE.Remove(gr);
             db.SaveChanges();
             Load();

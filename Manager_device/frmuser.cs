@@ -68,7 +68,11 @@ namespace Manager_device
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-
+            string id = txtId_user.Text;
+            user = db.USERs.Where(x => x.ID_RULE == id).SingleOrDefault();
+            db.USERs.Remove(user);
+            db.SaveChanges();
+            Load_data();
         }
 
         private void dtgvUser_CellClick(object sender, DataGridViewCellEventArgs e)

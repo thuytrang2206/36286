@@ -53,7 +53,7 @@ namespace Manager_device
             // TODO: This line of code loads data into the 'manager_deviceDataSet.GROUP_DEVICE' table. You can move, or remove it, as needed.
             this.gROUP_DEVICETableAdapter.Fill(this.manager_deviceDataSet.GROUP_DEVICE);
             cbbsearch_group.DataSource = (from g in db.GROUP_DEVICE select new { g.NAME }).ToList();
-            dtgvdevice.Rows.Clear();
+           
         }
 
         private void btnExit_Click(object sender, EventArgs e)

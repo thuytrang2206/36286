@@ -59,13 +59,16 @@ namespace Manager_device
             rule.NAME = txtName.Text;
             db.SaveChanges();
             Load_Data();
-            Clear();
-            
+            Clear(); 
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-
+            string id=txtID_r.Text;
+            rule = db.RULEs.Where(x => x.ID_RULE == id).SingleOrDefault();
+            db.RULEs.Remove(rule);
+            db.SaveChanges();
+            Load_Data();
         }
 
         private void dtgvrule_CellClick(object sender, DataGridViewCellEventArgs e)
