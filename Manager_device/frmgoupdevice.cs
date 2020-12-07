@@ -40,6 +40,11 @@ namespace Manager_device
             dtgvgroup.DataSource = binds;
 
         }
+        void Clear()
+        {
+            txtID.Text = "";
+            txtNAME.Text = "";
+        }
        
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -70,7 +75,6 @@ namespace Manager_device
         }
         void Edit_Data()
         {
-
             string id = dtgvgroup.SelectedCells[0].OwningRow.Cells["ID_GROUP"].Value.ToString();
             gr = db.GROUP_DEVICE.Find(id);
             gr.ID_GROUP = txtID.Text;
@@ -82,6 +86,7 @@ namespace Manager_device
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Edit_Data();
+            Clear();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -95,6 +100,7 @@ namespace Manager_device
             db.GROUP_DEVICE.Remove(gr);
             db.SaveChanges();
             Load();
+            Clear();
         }
 
         private void dtgvgroup_CellClick(object sender, DataGridViewCellEventArgs e)
