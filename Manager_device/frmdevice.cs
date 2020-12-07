@@ -15,23 +15,23 @@ namespace Manager_device
     public partial class frmdevice : Form
     {
         Manager_deviceEntities db = new Manager_deviceEntities();
-        
+
         BindingSource binds;
         DEVICE dev = new DEVICE();
         public frmdevice()
         {
             InitializeComponent();
             binds = new BindingSource();
-            Form1 frm = new Form1();
+            frmMain frmm = new frmMain();
             Load_Data();
         }
-        string strname;
+        string name;
         public frmdevice(string giatri) : this()
         {
-            strname = giatri;
-            txtUser.Text = strname;
+            name = giatri;
+            txtUser.Text = name;
         }
-       void Clear()
+        void Clear()
         {
             txtId.Text = "";
             txtName.Text = "";
@@ -40,12 +40,12 @@ namespace Manager_device
         }
         void Load_Data()
         {
-            var listdevice = from d in db.DEVICEs select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ENABLE, d.ID_USER };
-            binds.DataSource = listdevice.ToList();
-            //var temp = listdevice.ToList();
-            dtgvdevice.DataSource = binds;
+            var listd = from d in db.DEVICEs select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ID_USER };
+
+            binds.DataSource = listd.ToList();
+            dtgvdevice.DataSource = binds; 
         }
-  
+
         private void frmdevice_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'manager_deviceDataSet2.GROUP_DEVICE' table. You can move, or remove it, as needed.
@@ -53,6 +53,7 @@ namespace Manager_device
             // TODO: This line of code loads data into the 'manager_deviceDataSet.GROUP_DEVICE' table. You can move, or remove it, as needed.
             this.gROUP_DEVICETableAdapter.Fill(this.manager_deviceDataSet.GROUP_DEVICE);
             cbbsearch_group.DataSource = (from g in db.GROUP_DEVICE select new { g.NAME }).ToList();
+            dtgvdevice.Rows.Clear();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -83,7 +84,7 @@ namespace Manager_device
                     db.SaveChanges();
                     Load_Data();
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -116,25 +117,32 @@ namespace Manager_device
             DataGridViewRow row = dtgvdevice.Rows[selecIndex];
             txtId.Text = row.Cells[0].Value.ToString();
             txtName.Text = row.Cells[1].Value.ToString();
-            dateTimePicker2.Value =DateTime.Parse(row.Cells[3].Value.ToString());
+            dateTimePicker2.Value = DateTime.Parse(row.Cells[3].Value.ToString());
             cbbID_GROUP.Text = row.Cells[4].Value.ToString();
-            cbbENABLE.Text = row.Cells[5].Value.ToString();
-            txtUser.Text = row.Cells[6].Value.ToString();
+           // cbbENABLE.Text = row.Cells[5].Value.ToString();
+            txtUser.Text = row.Cells[5].Value.ToString();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
             string id = txtId.Text;
             dev = db.DEVICEs.Where(d => d.ID_DEVICE == id).SingleOrDefault();
-            db.DEVICEs.Remove(dev);
-            db.SaveChanges();
-            Load_Data();
+            if (dev.ENABLE == true) {
+                db.DEVICEs.Remove(dev);
+                db.SaveChanges();
+                Load_Data();
+            }
+            else
+            {
+                MessageBox.Show("Not delete value!");
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-           var listdevice= from d in db.DEVICEs where(d.NAME.Contains(txtSearch.Text) )
-                           select  new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ENABLE, d.USER };
+            var listdevice = from d in db.DEVICEs
+                             where (d.NAME.Contains(txtSearch.Text))
+                             select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ID_USER };
             binds.DataSource = listdevice.ToList();
             dtgvdevice.DataSource = binds;
         }
@@ -154,14 +162,14 @@ namespace Manager_device
                 }
                 var listdevice = from d in db.DEVICEs
                                  where (d.ID_GROUP.Contains(selectgroupID))
-                                 select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ENABLE, d.USER };
+                                 select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ID_USER };
                 binds.DataSource = listdevice.ToList();
                 dtgvdevice.DataSource = binds;
             }
         }
         struct DataParameter
         {
-           public List<DEVICE> listdevice;
+            public List<DEVICE> listdevice;
             public string FileName { get; set; }
         }
         DataParameter _inputParamater;
@@ -219,24 +227,24 @@ namespace Manager_device
             using (StreamWriter sw = new StreamWriter(new FileStream(fileName, FileMode.Create), Encoding.UTF8))
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("ID_DEVICE,NAME,UPDATETIME,DATEPLAN,ID_GROUP");
+                sb.AppendLine("ID_DEVICE,NAME,UPDATETIME,DATEPLAN,ID_GROUP,ID_USER");
                 foreach (DEVICE d in list)
                 {
                     if (!backgroundWorker1.CancellationPending)
                     {
                         backgroundWorker1.ReportProgress(index++ * 100 / process);
-                        sb.AppendLine(string.Format("{0},{1},{2},{3},{4}", d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP));
+                        sb.AppendLine(string.Format("{0},{1},{2},{3},{4},{5}", d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP,d.ID_USER));
                     }
                 }
                 sw.Write(sb.ToString());
             }
         }
-       
+
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Thread.Sleep(100);
         }
-        
+
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar.Value = e.ProgressPercentage;

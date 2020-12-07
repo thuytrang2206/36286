@@ -24,7 +24,7 @@ namespace Manager_device
         }
         void Load_Data()
         {
-            var listdetail = from dt in db.DETAIL_CHECK select new { dt.ID_DETAIL, dt.ID_DEVICE,dt.DATECHECK,dt.INFOCHECK};
+            var listdetail = from dt in db.DETAIL_CHECK select new { dt.ID_DETAIL, dt.ID_DEVICE,dt.DATECHECK};
             binds.DataSource = listdetail.ToList();
             dataGridView1.DataSource = binds;
         }
