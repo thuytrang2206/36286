@@ -23,10 +23,7 @@ namespace Manager_device
             {
                 if(db.USERs.Where(r=>r.ID_USER==txtuser.Text && r.PASSWORD == txtpass.Text).Count()>0)
                 { 
-
-                    MessageBox.Show("Login is correct!");
                     frmMain frm = new frmMain(txtuser.Text);
-                    
                     this.Hide();
                     frm.ShowDialog();
                 }

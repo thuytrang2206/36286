@@ -20,8 +20,6 @@ namespace Manager_device
         {
             InitializeComponent();
             Form1 frm = new Form1();
-            
-    
             binds = new BindingSource();
             Load();
         }
@@ -34,11 +32,9 @@ namespace Manager_device
         }
         void Load()
         {
-
             var listgroup = from g in db.GROUP_DEVICE select new { g.ID_GROUP, g.NAME };
             binds.DataSource = listgroup.ToList();
             dtgvgroup.DataSource = binds;
-
         }
         void Clear()
         {

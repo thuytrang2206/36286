@@ -257,7 +257,7 @@
             this.cbbsearch_group.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gROUPDEVICEBindingSource2, "ID_GROUP", true));
             this.cbbsearch_group.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.gROUPDEVICEBindingSource2, "NAME", true));
             this.cbbsearch_group.DataSource = this.gROUPDEVICEBindingSource2;
-            this.cbbsearch_group.DisplayMember = "NAME";
+            this.cbbsearch_group.DisplayMember = "ID_GROUP";
             this.cbbsearch_group.FormattingEnabled = true;
             this.cbbsearch_group.Location = new System.Drawing.Point(12, 227);
             this.cbbsearch_group.Name = "cbbsearch_group";
