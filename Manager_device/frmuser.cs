@@ -25,9 +25,9 @@ namespace Manager_device
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            frmMain frm = new frmMain();
+            //frmMain frm = new frmMain();
             this.Hide();
-            frm.ShowDialog();
+           // frm.ShowDialog();
         }
 
         private void frmuser_Load(object sender, EventArgs e)

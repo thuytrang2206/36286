@@ -22,7 +22,7 @@ namespace Manager_device
             InitializeComponent();
             Form1 frm = new Form1();
             binds = new BindingSource();
-            frmMain frmm = new frmMain();
+           // frmMain frmm = new frmMain();
             Load1();
         }
         string name;
@@ -44,7 +44,7 @@ namespace Manager_device
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            frmMain frm = new frmMain();
+            frmMain frm = new frmMain(txtUser.Text);
             this.Hide();
             frm.ShowDialog();
         }

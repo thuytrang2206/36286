@@ -22,7 +22,7 @@ namespace Manager_device
         {
             InitializeComponent();
             binds = new BindingSource();
-            frmMain frmm = new frmMain();
+           // frmMain frmm = new frmMain();
         }
         string name;
         public frmdevice(string giatri) : this()
@@ -107,7 +107,7 @@ namespace Manager_device
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            frmMain frm = new frmMain();
+           frmMain frm = new frmMain(txtUser.Text);
             this.Hide();
             frm.ShowDialog();
         }

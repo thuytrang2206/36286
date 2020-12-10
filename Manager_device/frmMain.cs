@@ -12,19 +12,19 @@ namespace Manager_device
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        public frmMain(string strname)
         {
             InitializeComponent();
             Form1 frm1 = new Form1();
             frm1.Hide();
-
-        }
-        string strname;
-        public frmMain(string giatri) : this()
-        {
-            strname = giatri;
             label2.Text = strname;
         }
+        
+        //public frmMain(string giatri) : this()
+        //{
+        //    strname = giatri;
+        //    label2.Text = strname;
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
