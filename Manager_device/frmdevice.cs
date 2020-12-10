@@ -17,6 +17,7 @@ namespace Manager_device
         Manager_deviceEntities db = new Manager_deviceEntities();
         BindingSource binds;
         DEVICE dev = new DEVICE();
+        USER user = new USER();
         public frmdevice()
         {
             InitializeComponent();
@@ -29,12 +30,29 @@ namespace Manager_device
             name = giatri;
             txtUser.Text = name;
         }
+        void Check_user()
+        {
+            string id = txtUser.Text;
+            user = db.USERs.Where(x => x.ID_USER == id).FirstOrDefault();
+            if (user.ID_RULE == "R002")
+            {
+                btnAdd.Visible = false;
+                btnEdit.Visible = false;
+                btnDel.Visible = false;
+            }
+        }
         void Clear()
         {
             txtId.Text = "";
             txtName.Text = "";
             cbbENABLE.Text = "";
             cbbID_GROUP.Text = "";
+        }
+        void Load_Data1()
+        {
+            var listd = from d in db.DEVICEs select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ID_USER };
+            binds.DataSource = listd.ToList();
+            dtgvdevice.DataSource = binds;
         }
         void Load_Data(string textSearch = "")
         {
@@ -46,13 +64,32 @@ namespace Manager_device
         void Load_DataByGroupId(string groupID)
         {
             var listd = from d in db.DEVICEs where (d.ENABLE == true && d.ID_GROUP.Contains(groupID)) select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ID_USER };
-            var temp = listd.ToList();
             binds.DataSource = listd.ToList();
             dtgvdevice.DataSource = binds;
+        }
+        private bool Check_data()
+        {
+            bool ok = false;
+            
+            foreach (Control ctrl in this.Controls)
+            {
+                if(ctrl is TextBox)
+                {
+                    TextBox tx = ctrl as TextBox;
+                    if (string.IsNullOrEmpty(tx.Text))
+                    {
+                        ok = false;
+                        
+                    }
+                   
+                }
+            }
+            return ok;
         }
 
         private void frmdevice_Load(object sender, EventArgs e)
         {
+            this.gROUP_DEVICETableAdapter.Fill(this.manager_deviceDataSet.GROUP_DEVICE);
             try
             {
                 listGroupDevices = db.GROUP_DEVICE.ToList();
@@ -65,6 +102,7 @@ namespace Manager_device
             catch (Exception)
             {
             }
+            Check_user();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -84,16 +122,24 @@ namespace Manager_device
                 }
                 else
                 {
-                    dev.ID_DEVICE = txtId.Text;
-                    dev.NAME = txtName.Text;
-                    dev.UPDATETIME = DateTime.Now;
-                    dev.DATEPLAN = DateTime.Parse(dateTimePicker2.Value.ToString());
-                    dev.ID_GROUP = cbbID_GROUP.Text;
-                    dev.ENABLE = bool.Parse(cbbENABLE.Text);
-                    dev.ID_USER = txtUser.Text;
-                    db.DEVICEs.Add(dev);
-                    db.SaveChanges();
-                    Load_Data();
+                    if(Check_data()== true)
+                    {
+                        MessageBox.Show("Dữ liệu không được để trống");
+                    }
+                    else
+                    {
+                        dev.ID_DEVICE = txtId.Text;
+                        dev.NAME = txtName.Text;
+                        dev.UPDATETIME = DateTime.Now;
+                        dev.DATEPLAN = DateTime.Parse(dateTimePicker2.Value.ToString());
+                        dev.ID_GROUP = cbbID_GROUP.Text;
+                        dev.ENABLE = bool.Parse(cbbENABLE.Text);
+                        dev.ID_USER = txtUser.Text;
+                        db.DEVICEs.Add(dev);
+                        db.SaveChanges();
+                        Load_Data1();
+                        Clear();
+                    }
                 }
 
             }

@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtNAME = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvgroup)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,11 +122,20 @@
             this.txtNAME.Size = new System.Drawing.Size(100, 20);
             this.txtNAME.TabIndex = 9;
             // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(495, 176);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(100, 20);
+            this.txtUser.TabIndex = 10;
+            this.txtUser.Visible = false;
+            // 
             // frmgoupdevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 203);
+            this.Controls.Add(this.txtUser);
             this.Controls.Add(this.txtNAME);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label2);
@@ -137,6 +147,7 @@
             this.Controls.Add(this.btnExit);
             this.Name = "frmgoupdevice";
             this.Text = "frmgoupdevice";
+            this.Load += new System.EventHandler(this.frmgoupdevice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvgroup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -154,5 +165,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtNAME;
+        private System.Windows.Forms.TextBox txtUser;
     }
 }

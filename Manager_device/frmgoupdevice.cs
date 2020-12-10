@@ -16,21 +16,39 @@ namespace Manager_device
         List<GROUP_DEVICE> listgroup;
         BindingSource binds;
         GROUP_DEVICE gr = new GROUP_DEVICE();
+        USER user = new USER();
         public frmgoupdevice()
         {
             InitializeComponent();
             Form1 frm = new Form1();
             binds = new BindingSource();
-            Load();
+            frmMain frmm = new frmMain();
+            Load1();
         }
-
+        string name;
+        public frmgoupdevice(string giatri) : this()
+        {
+            name = giatri;
+            txtUser.Text = name;
+        }
+        void Check_user()
+        {
+            string id = txtUser.Text;
+            user = db.USERs.Where(x => x.ID_USER == id).FirstOrDefault();
+            if (user.ID_RULE == "R002")
+            {
+                btnAdd.Visible = false;
+                btnEdit.Visible = false;
+                btnDel.Visible = false;
+            }
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             frmMain frm = new frmMain();
             this.Hide();
             frm.ShowDialog();
         }
-        void Load()
+        void Load1()
         {
             var listgroup = from g in db.GROUP_DEVICE select new { g.ID_GROUP, g.NAME };
             binds.DataSource = listgroup.ToList();
@@ -57,7 +75,7 @@ namespace Manager_device
                     gr.NAME = txtNAME.Text;
                     db.GROUP_DEVICE.Add(gr);
                     db.SaveChanges();
-                    Load();
+                    Load1();
                     MessageBox.Show("ADD DATA IS SUCCESS!");
                     txtID.Clear();
                     txtNAME.Clear();
@@ -76,7 +94,7 @@ namespace Manager_device
             gr.ID_GROUP = txtID.Text;
             gr.NAME = txtNAME.Text;
             db.SaveChanges();
-            Load();
+            Load1();
 
         }
         private void btnEdit_Click(object sender, EventArgs e)
@@ -95,7 +113,7 @@ namespace Manager_device
             }
             db.GROUP_DEVICE.Remove(gr);
             db.SaveChanges();
-            Load();
+            Load1();
             Clear();
         }
 
@@ -106,6 +124,11 @@ namespace Manager_device
             DataGridViewRow row = dtgvgroup.Rows[selectIndex];
             txtID.Text = row.Cells[0].Value.ToString();
             txtNAME.Text = row.Cells[1].Value.ToString();
+        }
+
+        private void frmgoupdevice_Load(object sender, EventArgs e)
+        {
+            Check_user();
         }
     }
 }

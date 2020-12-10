@@ -28,7 +28,7 @@ namespace Manager_device
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmgoupdevice fmg = new frmgoupdevice();
+            frmgoupdevice fmg = new frmgoupdevice(label2.Text);
             this.Hide();
             fmg.ShowDialog();
         }

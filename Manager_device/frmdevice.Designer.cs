@@ -256,14 +256,11 @@
             // 
             this.cbbsearch_group.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gROUPDEVICEBindingSource2, "ID_GROUP", true));
             this.cbbsearch_group.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.gROUPDEVICEBindingSource2, "NAME", true));
-            this.cbbsearch_group.DataSource = this.gROUPDEVICEBindingSource2;
-            this.cbbsearch_group.DisplayMember = "ID_GROUP";
             this.cbbsearch_group.FormattingEnabled = true;
             this.cbbsearch_group.Location = new System.Drawing.Point(12, 227);
             this.cbbsearch_group.Name = "cbbsearch_group";
             this.cbbsearch_group.Size = new System.Drawing.Size(121, 21);
             this.cbbsearch_group.TabIndex = 23;
-            this.cbbsearch_group.ValueMember = "ID_GROUP";
             this.cbbsearch_group.SelectedIndexChanged += new System.EventHandler(this.cbbsearch_group_SelectedIndexChanged);
             // 
             // gROUPDEVICEBindingSource2

@@ -65,10 +65,15 @@ namespace Manager_device
         private void btnDel_Click(object sender, EventArgs e)
         {
             string id=txtID_r.Text;
-            rule = db.RULEs.Where(x => x.ID_RULE == id).SingleOrDefault();
+            rule = db.RULEs.First(x => x.ID_RULE == id);
+            foreach(var user in db.USERs.Where(d => d.ID_RULE == id))
+            {
+                db.USERs.Remove(user);
+            }
             db.RULEs.Remove(rule);
             db.SaveChanges();
             Load_Data();
+            Clear();
         }
 
         private void dtgvrule_CellClick(object sender, DataGridViewCellEventArgs e)
