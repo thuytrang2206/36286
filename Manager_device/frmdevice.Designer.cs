@@ -53,14 +53,14 @@
             this.gROUP_DEVICETableAdapter1 = new Manager_device.Manager_deviceDataSet2TableAdapters.GROUP_DEVICETableAdapter();
             this.manager_deviceDataSet3 = new Manager_device.Manager_deviceDataSet3();
             this.cbbsearch_group = new System.Windows.Forms.ComboBox();
-            this.gROUPDEVICEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.txtUser = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
-            this.gROUPDEVICEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.gROUPDEVICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.gROUPDEVICEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.gROUPDEVICEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gROUPDEVICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvdevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet)).BeginInit();
@@ -169,8 +169,6 @@
             // 
             // cbbID_GROUP
             // 
-            this.cbbID_GROUP.DataSource = this.gROUPDEVICEBindingSource3;
-            this.cbbID_GROUP.DisplayMember = "ID_GROUP";
             this.cbbID_GROUP.FormattingEnabled = true;
             this.cbbID_GROUP.Location = new System.Drawing.Point(755, 134);
             this.cbbID_GROUP.Name = "cbbID_GROUP";
@@ -263,10 +261,6 @@
             this.cbbsearch_group.TabIndex = 23;
             this.cbbsearch_group.SelectedIndexChanged += new System.EventHandler(this.cbbsearch_group_SelectedIndexChanged);
             // 
-            // gROUPDEVICEBindingSource2
-            // 
-            this.gROUPDEVICEBindingSource2.DataSource = typeof(Manager_device.GROUP_DEVICE);
-            // 
             // txtUser
             // 
             this.txtUser.Location = new System.Drawing.Point(764, 195);
@@ -293,14 +287,6 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // gROUPDEVICEBindingSource1
-            // 
-            this.gROUPDEVICEBindingSource1.DataSource = typeof(Manager_device.GROUP_DEVICE);
-            // 
-            // gROUPDEVICEBindingSource
-            // 
-            this.gROUPDEVICEBindingSource.DataSource = typeof(Manager_device.GROUP_DEVICE);
-            // 
             // progressBar
             // 
             this.progressBar.Location = new System.Drawing.Point(514, 264);
@@ -315,6 +301,18 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // gROUPDEVICEBindingSource2
+            // 
+            this.gROUPDEVICEBindingSource2.DataSource = typeof(Manager_device.GROUP_DEVICE);
+            // 
+            // gROUPDEVICEBindingSource1
+            // 
+            this.gROUPDEVICEBindingSource1.DataSource = typeof(Manager_device.GROUP_DEVICE);
+            // 
+            // gROUPDEVICEBindingSource
+            // 
+            this.gROUPDEVICEBindingSource.DataSource = typeof(Manager_device.GROUP_DEVICE);
             // 
             // frmdevice
             // 

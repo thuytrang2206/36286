@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtID_r = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvrule)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,11 +122,20 @@
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 9;
             // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(13, 226);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(100, 20);
+            this.txtUser.TabIndex = 10;
+            this.txtUser.Visible = false;
+            // 
             // frmrules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 261);
+            this.Controls.Add(this.txtUser);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtID_r);
             this.Controls.Add(this.label2);
@@ -154,5 +164,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtID_r;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtUser;
     }
 }

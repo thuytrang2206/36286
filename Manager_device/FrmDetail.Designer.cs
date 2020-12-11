@@ -42,10 +42,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dtcheck = new System.Windows.Forms.DateTimePicker();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.dEVICETableAdapter = new Manager_device.Manager_deviceDataSet4TableAdapters.DEVICETableAdapter();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dEVICEBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet4)).BeginInit();
@@ -152,25 +154,19 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // btnExit
             // 
-            this.button2.Location = new System.Drawing.Point(781, 255);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnExit.Location = new System.Drawing.Point(781, 255);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 10;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // dEVICETableAdapter
             // 
             this.dEVICETableAdapter.ClearBeforeFill = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(666, 255);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 11;
             // 
             // dateTimePicker2
             // 
@@ -179,14 +175,44 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 12;
             // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(12, 270);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(100, 20);
+            this.txtUser.TabIndex = 13;
+            this.txtUser.Visible = false;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(700, 207);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 14;
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Location = new System.Drawing.Point(619, 207);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(75, 23);
+            this.btnDel.TabIndex = 15;
+            this.btnDel.Text = "Xóa";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
             // FrmDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 302);
+            this.Controls.Add(this.btnDel);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.txtUser);
             this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dtcheck);
             this.Controls.Add(this.label4);
@@ -221,12 +247,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtcheck;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.BindingSource dEVICEBindingSource;
         private Manager_deviceDataSet4 manager_deviceDataSet4;
         private System.Windows.Forms.BindingSource dEVICEBindingSource1;
         private Manager_deviceDataSet4TableAdapters.DEVICETableAdapter dEVICETableAdapter;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDel;
     }
 }

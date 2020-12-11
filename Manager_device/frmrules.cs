@@ -25,11 +25,17 @@ namespace Manager_device
             Load_Data();
         }
 
+        string name;
+        public frmrules(string giatri) : this()
+        {
+            name = giatri;
+            txtUser.Text = name;
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
-           // frmMain frm = new frmMain();
+            frmMain frm = new frmMain(txtUser.Text);
             this.Hide();
-            //frm.ShowDialog();
+            frm.ShowDialog();
         }
         void Load_Data()
         {

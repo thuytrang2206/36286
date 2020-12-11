@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace Manager_device
 {
@@ -20,8 +21,8 @@ namespace Manager_device
         private void button1_Click(object sender, EventArgs e)
         {
             try
-            {
-                if(db.USERs.Where(r=>r.ID_USER==txtuser.Text && r.PASSWORD == txtpass.Text).Count()>0)
+            { 
+                if (db.USERs.Where(r=>r.ID_USER==txtuser.Text && r.PASSWORD ==txtpass.Text).Count()>0)
                 { 
                     frmMain frm = new frmMain(txtuser.Text);
                     this.Hide();
@@ -38,7 +39,7 @@ namespace Manager_device
             }
 
         }
+       
 
-      
     }
 }

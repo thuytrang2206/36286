@@ -22,7 +22,7 @@ namespace Manager_device
             InitializeComponent();
             Form1 frm = new Form1();
             binds = new BindingSource();
-           // frmMain frmm = new frmMain();
+           
             Load1();
         }
         string name;

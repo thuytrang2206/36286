@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace Manager_device
 {
@@ -16,18 +17,24 @@ namespace Manager_device
         USER user = new USER();
         List<USER> listuser;
         BindingSource binds;
+        MD5 md5 = MD5.Create();
         public frmuser()
         {
             InitializeComponent();
             binds = new BindingSource();
             Load_data();
         }
-
+        string name;
+        public frmuser(string giatri) : this()
+        {
+            name = giatri;
+            txtUser.Text = name;
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            //frmMain frm = new frmMain();
+            frmMain frm = new frmMain(txtUser.Text);
             this.Hide();
-           // frm.ShowDialog();
+            frm.ShowDialog();
         }
 
         private void frmuser_Load(object sender, EventArgs e)
@@ -42,11 +49,24 @@ namespace Manager_device
             binds.DataSource = listuser.ToList();
             dtgvUser.DataSource = binds;
         }
+        private string getMD5(string txt)
+        {
+            txt = txtPass.Text;
+            string str = "";
+            Byte[] buffer = System.Text.Encoding.UTF8.GetBytes(txt);
+            System.Security.Cryptography.MD5CryptoServiceProvider md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            buffer = md5.ComputeHash(buffer);
+            foreach (Byte b in buffer)
+            {
+                str += b.ToString("X2");
+            }
+            return str;
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             user.ID_USER = txtId_user.Text;
             user.NAME = txtName.Text;
-            user.PASSWORD = txtPass.Text;
+            user.PASSWORD = getMD5(txtPass.Text);
             user.ID_RULE = cbbId_rule.Text;
             db.USERs.Add(user);
             db.SaveChanges();

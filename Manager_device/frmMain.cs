@@ -42,21 +42,21 @@ namespace Manager_device
 
         private void button3_Click(object sender, EventArgs e)
         {
-            frmuser frmu = new frmuser();
+            frmuser frmu = new frmuser(label2.Text);
             this.Hide();
             frmu.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            frmrules frmr = new frmrules();
+            frmrules frmr = new frmrules(label2.Text);
             this.Hide();
             frmr.ShowDialog();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            FrmDetail frmd = new FrmDetail();
+            FrmDetail frmd = new FrmDetail(label2.Text);
             this.Hide();
             frmd.ShowDialog();
         }

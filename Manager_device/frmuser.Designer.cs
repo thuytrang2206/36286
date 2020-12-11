@@ -40,14 +40,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtId_user = new System.Windows.Forms.TextBox();
             this.cbbId_rule = new System.Windows.Forms.ComboBox();
-            this.manager_deviceDataSet1 = new Manager_device.Manager_deviceDataSet1();
             this.rULEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.manager_deviceDataSet1 = new Manager_device.Manager_deviceDataSet1();
             this.rULETableAdapter = new Manager_device.Manager_deviceDataSet1TableAdapters.RULETableAdapter();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rULEBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
@@ -152,15 +153,15 @@
             this.cbbId_rule.Size = new System.Drawing.Size(99, 21);
             this.cbbId_rule.TabIndex = 15;
             // 
-            // manager_deviceDataSet1
-            // 
-            this.manager_deviceDataSet1.DataSetName = "Manager_deviceDataSet1";
-            this.manager_deviceDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // rULEBindingSource
             // 
             this.rULEBindingSource.DataMember = "RULE";
             this.rULEBindingSource.DataSource = this.manager_deviceDataSet1;
+            // 
+            // manager_deviceDataSet1
+            // 
+            this.manager_deviceDataSet1.DataSetName = "Manager_deviceDataSet1";
+            this.manager_deviceDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // rULETableAdapter
             // 
@@ -180,11 +181,20 @@
             this.txtPass.Size = new System.Drawing.Size(100, 20);
             this.txtPass.TabIndex = 17;
             // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(552, 234);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(100, 20);
+            this.txtUser.TabIndex = 18;
+            this.txtUser.Visible = false;
+            // 
             // frmuser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 261);
+            this.Controls.Add(this.txtUser);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.cbbId_rule);
@@ -202,8 +212,8 @@
             this.Text = "frmuser";
             this.Load += new System.EventHandler(this.frmuser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rULEBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +237,6 @@
         private Manager_deviceDataSet1TableAdapters.RULETableAdapter rULETableAdapter;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.TextBox txtUser;
     }
 }
