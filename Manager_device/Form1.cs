@@ -16,13 +16,29 @@ namespace Manager_device
         public Form1()
         {
             InitializeComponent();
+            
         }
         Manager_deviceEntities db = new Manager_deviceEntities();
+        MD5 md5 = MD5.Create();
+        private string getMD5(string txt)
+        {
+            txt = txtpass.Text;
+            string str = "";
+            Byte[] buffer = System.Text.Encoding.UTF8.GetBytes(txt);
+            System.Security.Cryptography.MD5CryptoServiceProvider md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            buffer = md5.ComputeHash(buffer);
+            foreach (Byte b in buffer)
+            {
+                str += b.ToString("X2");
+            }
+            return str;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            string password = getMD5(txtpass.Text);
             try
             { 
-                if (db.USERs.Where(r=>r.ID_USER==txtuser.Text && r.PASSWORD ==txtpass.Text).Count()>0)
+                if (db.USERs.Where(r=>r.ID_USER==txtuser.Text && r.PASSWORD ==password).Count()>0)
                 { 
                     frmMain frm = new frmMain(txtuser.Text);
                     this.Hide();
@@ -37,9 +53,9 @@ namespace Manager_device
             {
                 Console.Write(ex.ToString());
             }
-
+      
         }
-       
+        
 
     }
 }

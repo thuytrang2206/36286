@@ -17,20 +17,21 @@ namespace Manager_device
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DEVICE()
         {
-            this.DETAIL_CHECK = new HashSet<DETAIL_CHECK>();
+            this.HISTORies = new HashSet<HISTORY>();
         }
     
         public string ID_DEVICE { get; set; }
         public string NAME { get; set; }
         public Nullable<System.DateTime> UPDATETIME { get; set; }
         public Nullable<System.DateTime> DATEPLAN { get; set; }
+        public Nullable<int> QUANTITY { get; set; }
         public Nullable<bool> ENABLE { get; set; }
         public string ID_GROUP { get; set; }
         public string ID_USER { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETAIL_CHECK> DETAIL_CHECK { get; set; }
         public virtual GROUP_DEVICE GROUP_DEVICE { get; set; }
         public virtual USER USER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HISTORY> HISTORies { get; set; }
     }
 }

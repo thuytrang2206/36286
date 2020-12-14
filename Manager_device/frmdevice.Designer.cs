@@ -53,14 +53,16 @@
             this.gROUP_DEVICETableAdapter1 = new Manager_device.Manager_deviceDataSet2TableAdapters.GROUP_DEVICETableAdapter();
             this.manager_deviceDataSet3 = new Manager_device.Manager_deviceDataSet3();
             this.cbbsearch_group = new System.Windows.Forms.ComboBox();
+            this.gROUPDEVICEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.txtUser = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.gROUPDEVICEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.gROUPDEVICEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gROUPDEVICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtquantity = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvdevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUPDEVICEBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manager_deviceDataSet)).BeginInit();
@@ -111,7 +113,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(665, 101);
+            this.label4.Location = new System.Drawing.Point(666, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 5;
@@ -120,7 +122,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(665, 123);
+            this.label5.Location = new System.Drawing.Point(666, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 6;
@@ -129,7 +131,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(666, 161);
+            this.label6.Location = new System.Drawing.Point(667, 132);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 7;
@@ -148,14 +150,14 @@
             this.cbbENABLE.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.cbbENABLE.Location = new System.Drawing.Point(757, 161);
+            this.cbbENABLE.Location = new System.Drawing.Point(758, 132);
             this.cbbENABLE.Name = "cbbENABLE";
             this.cbbENABLE.Size = new System.Drawing.Size(121, 21);
             this.cbbENABLE.TabIndex = 11;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(755, 101);
+            this.dateTimePicker2.Location = new System.Drawing.Point(756, 72);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 13;
@@ -170,7 +172,7 @@
             // cbbID_GROUP
             // 
             this.cbbID_GROUP.FormattingEnabled = true;
-            this.cbbID_GROUP.Location = new System.Drawing.Point(755, 134);
+            this.cbbID_GROUP.Location = new System.Drawing.Point(756, 105);
             this.cbbID_GROUP.Name = "cbbID_GROUP";
             this.cbbID_GROUP.Size = new System.Drawing.Size(121, 21);
             this.cbbID_GROUP.TabIndex = 14;
@@ -261,6 +263,10 @@
             this.cbbsearch_group.TabIndex = 23;
             this.cbbsearch_group.SelectedIndexChanged += new System.EventHandler(this.cbbsearch_group_SelectedIndexChanged);
             // 
+            // gROUPDEVICEBindingSource2
+            // 
+            this.gROUPDEVICEBindingSource2.DataSource = typeof(Manager_device.GROUP_DEVICE);
+            // 
             // txtUser
             // 
             this.txtUser.Location = new System.Drawing.Point(764, 195);
@@ -302,10 +308,6 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // gROUPDEVICEBindingSource2
-            // 
-            this.gROUPDEVICEBindingSource2.DataSource = typeof(Manager_device.GROUP_DEVICE);
-            // 
             // gROUPDEVICEBindingSource1
             // 
             this.gROUPDEVICEBindingSource1.DataSource = typeof(Manager_device.GROUP_DEVICE);
@@ -314,11 +316,29 @@
             // 
             this.gROUPDEVICEBindingSource.DataSource = typeof(Manager_device.GROUP_DEVICE);
             // 
+            // txtquantity
+            // 
+            this.txtquantity.Location = new System.Drawing.Point(758, 159);
+            this.txtquantity.Name = "txtquantity";
+            this.txtquantity.Size = new System.Drawing.Size(100, 20);
+            this.txtquantity.TabIndex = 28;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(672, 165);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "SỐ LƯỢNG";
+            // 
             // frmdevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(961, 303);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtquantity);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.label7);
@@ -391,5 +411,7 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.TextBox txtquantity;
+        private System.Windows.Forms.Label label8;
     }
 }

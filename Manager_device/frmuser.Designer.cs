@@ -53,7 +53,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(589, 119);
+            this.btnExit.Location = new System.Drawing.Point(365, 226);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(55, 23);
             this.btnExit.TabIndex = 2;
@@ -66,13 +66,13 @@
             this.dtgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvUser.Location = new System.Drawing.Point(12, 19);
             this.dtgvUser.Name = "dtgvUser";
-            this.dtgvUser.Size = new System.Drawing.Size(380, 150);
+            this.dtgvUser.Size = new System.Drawing.Size(438, 150);
             this.dtgvUser.TabIndex = 3;
             this.dtgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvUser_CellClick);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(585, 18);
+            this.btnAdd.Location = new System.Drawing.Point(58, 224);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(59, 25);
             this.btnAdd.TabIndex = 4;
@@ -82,7 +82,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(585, 51);
+            this.btnEdit.Location = new System.Drawing.Point(155, 226);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(59, 23);
             this.btnEdit.TabIndex = 5;
@@ -92,7 +92,7 @@
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(585, 90);
+            this.btnDel.Location = new System.Drawing.Point(263, 226);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(59, 23);
             this.btnDel.TabIndex = 6;
@@ -103,7 +103,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(398, 19);
+            this.label1.Location = new System.Drawing.Point(456, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 7;
@@ -112,7 +112,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(398, 52);
+            this.label2.Location = new System.Drawing.Point(456, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 8;
@@ -121,7 +121,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(398, 78);
+            this.label3.Location = new System.Drawing.Point(456, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 9;
@@ -130,7 +130,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(398, 109);
+            this.label4.Location = new System.Drawing.Point(456, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 10;
@@ -138,17 +138,15 @@
             // 
             // txtId_user
             // 
-            this.txtId_user.Location = new System.Drawing.Point(460, 18);
+            this.txtId_user.Location = new System.Drawing.Point(518, 19);
             this.txtId_user.Name = "txtId_user";
             this.txtId_user.Size = new System.Drawing.Size(100, 20);
             this.txtId_user.TabIndex = 11;
             // 
             // cbbId_rule
             // 
-            this.cbbId_rule.DataSource = this.rULEBindingSource;
-            this.cbbId_rule.DisplayMember = "ID_RULE";
             this.cbbId_rule.FormattingEnabled = true;
-            this.cbbId_rule.Location = new System.Drawing.Point(461, 108);
+            this.cbbId_rule.Location = new System.Drawing.Point(519, 109);
             this.cbbId_rule.Name = "cbbId_rule";
             this.cbbId_rule.Size = new System.Drawing.Size(99, 21);
             this.cbbId_rule.TabIndex = 15;
@@ -169,21 +167,21 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(460, 49);
+            this.txtName.Location = new System.Drawing.Point(518, 50);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 16;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(460, 78);
+            this.txtPass.Location = new System.Drawing.Point(518, 79);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(100, 20);
             this.txtPass.TabIndex = 17;
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(552, 234);
+            this.txtUser.Location = new System.Drawing.Point(493, 226);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(100, 20);
             this.txtUser.TabIndex = 18;
@@ -193,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 261);
+            this.ClientSize = new System.Drawing.Size(624, 261);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtName);

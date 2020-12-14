@@ -57,9 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DETAIL_CHECK.cs">
-      <DependentUpon>Manager_deviceModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DEVICE.cs">
       <DependentUpon>Manager_deviceModel.tt</DependentUpon>
     </Compile>
@@ -108,6 +105,9 @@
     <Compile Include="GROUP_DEVICE.cs">
       <DependentUpon>Manager_deviceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="HISTORY.cs">
+      <DependentUpon>Manager_deviceModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Manager_deviceDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +153,8 @@
     <Compile Include="RULE.cs">
       <DependentUpon>Manager_deviceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TaskType.cs" />
+    <Compile Include="TaskTypeInfo.cs" />
     <Compile Include="USER.cs">
       <DependentUpon>Manager_deviceModel.tt</DependentUpon>
     </Compile>
@@ -208,10 +210,6 @@
     <None Include="Manager_deviceDataSet1.xss">
       <DependentUpon>Manager_deviceDataSet1.xsd</DependentUpon>
     </None>
-    <EntityDeploy Include="Manager_deviceModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Manager_deviceModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="Manager_deviceDataSet2.xsc">
       <DependentUpon>Manager_deviceDataSet2.xsd</DependentUpon>
     </None>
@@ -245,6 +243,10 @@
     <None Include="Manager_deviceDataSet4.xss">
       <DependentUpon>Manager_deviceDataSet4.xsd</DependentUpon>
     </None>
+    <EntityDeploy Include="Manager_deviceModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Manager_deviceModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Manager_deviceModel.edmx.diagram">
       <DependentUpon>Manager_deviceModel.edmx</DependentUpon>
     </None>

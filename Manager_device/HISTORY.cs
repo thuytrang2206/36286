@@ -12,12 +12,16 @@ namespace Manager_device
     using System;
     using System.Collections.Generic;
     
-    public partial class DETAIL_CHECK
+    public partial class HISTORY
     {
-        public string ID_DETAIL { get; set; }
+        public string ID_HISTORY { get; set; }
         public string ID_DEVICE { get; set; }
-        public Nullable<System.DateTime> DATECHECK { get; set; }
-        public string INFOCHECK { get; set; }
+        public Nullable<System.DateTime> UPDATE_CHECK { get; set; }
+        public Nullable<int> INFOCHECK { get; set; }
+        public string NOTE { get; set; }
+        public Nullable<int> QUANTITY { get; set; }
+        public Nullable<int> STATUS { get; set; }
+        public string ID_USER { get; set; }
     
         public virtual DEVICE DEVICE { get; set; }
     }

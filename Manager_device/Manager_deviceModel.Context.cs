@@ -25,9 +25,9 @@ namespace Manager_device
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<DETAIL_CHECK> DETAIL_CHECK { get; set; }
         public virtual DbSet<DEVICE> DEVICEs { get; set; }
         public virtual DbSet<GROUP_DEVICE> GROUP_DEVICE { get; set; }
+        public virtual DbSet<HISTORY> HISTORies { get; set; }
         public virtual DbSet<RULE> RULEs { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
     }

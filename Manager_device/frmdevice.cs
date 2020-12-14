@@ -18,6 +18,7 @@ namespace Manager_device
         BindingSource binds;
         DEVICE dev = new DEVICE();
         USER user = new USER();
+        
         private List<GROUP_DEVICE> listGroupDevices1;
         public frmdevice()
         {
@@ -75,20 +76,20 @@ namespace Manager_device
         }
         void Load_Data1()
         {
-            var listd = from d in db.DEVICEs select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ID_USER };
+            var listd = from d in db.DEVICEs select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN,d.QUANTITY, d.ID_GROUP, d.ID_USER };
             binds.DataSource = listd.ToList();
             dtgvdevice.DataSource = binds;
         }
         void Load_Data(string textSearch = "")
         {
-            var listd = from d in db.DEVICEs where ( d.NAME.Contains(textSearch)) select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ID_USER };
+            var listd = from d in db.DEVICEs where ( d.NAME.Contains(textSearch)) select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN,d.QUANTITY, d.ID_GROUP, d.ID_USER };
             var temp = listd.ToList();
             binds.DataSource = listd.ToList();
             dtgvdevice.DataSource = binds;
         }
         void Load_DataByGroupId(string groupID)
         {
-            var listd = from d in db.DEVICEs where (d.ID_GROUP.Contains(groupID)) select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN, d.ID_GROUP, d.ID_USER };
+            var listd = from d in db.DEVICEs where (d.ID_GROUP.Contains(groupID)) select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN,d.QUANTITY, d.ID_GROUP, d.ID_USER };
             binds.DataSource = listd.ToList();
             dtgvdevice.DataSource = binds;
         }
@@ -115,7 +116,7 @@ namespace Manager_device
         private void frmdevice_Load(object sender, EventArgs e)
         {
             //this.gROUP_DEVICETableAdapter.Fill(this.manager_deviceDataSet.GROUP_DEVICE);
-
+          
             try
             {
                 listGroupDevices = db.GROUP_DEVICE.ToList();
@@ -140,31 +141,31 @@ namespace Manager_device
             frm.ShowDialog();
         }
 
-        private string Matang()
-        {
-            string ma = "";
+        //private string Matang()
+        //{
+        //    string ma = "";
 
-            if (dtgvdevice.Rows.Count < 0)
-            {
-                dev.ID_DEVICE = "DE0001";
-            }
-            else
-            {
-                ma = "DE";
-                int k = Convert.ToInt32(dtgvdevice.Rows[dtgvdevice.Rows.Count-1].Cells[0].Value.ToString().Substring(2, 3));
-                k = k + 1;
-                if (k < 10)
-                {
-                    ma = ma + "00";
-                }
-                else if (k < 100)
-                {
-                    ma = ma + "0";
-                }
-                ma = ma + k.ToString();
-            }
-            return ma;
-        }
+        //    if (dtgvdevice.Rows.Count < 0)
+        //    {
+        //        dev.ID_DEVICE = "DE0001";
+        //    }
+        //    else
+        //    {
+        //        ma = "DE";
+        //        int k = int.Parse(dtgvdevice.Rows[dtgvdevice.Rows.Count-1].Cells[0].Value.ToString().Substring(2,3));
+        //        k = k + 1;
+        //        if (k < 10)
+        //        {
+        //            ma = ma + "00";
+        //        }
+        //        else if (k < 100)
+        //        {
+        //            ma = ma + "0";
+        //        }
+        //        ma = ma + k.ToString();
+        //    }
+        //    return ma;
+        //}
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -180,11 +181,15 @@ namespace Manager_device
                         MessageBox.Show("Dữ liệu không được để trống");
                     }
                     else
+
                     {
-                        dev.ID_DEVICE = Matang();
+                        var id = Guid.NewGuid().ToString(); ;
+
+                        dev.ID_DEVICE = id;
                         dev.NAME = txtName.Text;
                         dev.UPDATETIME = DateTime.Now;
                         dev.DATEPLAN = DateTime.Parse(dateTimePicker2.Value.ToString());
+                        dev.QUANTITY = int.Parse(txtquantity.Text);
                         dev.ID_GROUP = listGroupDevices1[cbbID_GROUP.SelectedIndex].ID_GROUP;
                         dev.ENABLE = bool.Parse(cbbENABLE.Text);
                         dev.ID_USER = txtUser.Text;
@@ -194,7 +199,7 @@ namespace Manager_device
                         Clear();
                     }
                 }
-
+                
             }
             catch (Exception ex)
             {

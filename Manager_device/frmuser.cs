@@ -18,11 +18,24 @@ namespace Manager_device
         List<USER> listuser;
         BindingSource binds;
         MD5 md5 = MD5.Create();
+        List<RULE> listrule;
         public frmuser()
         {
             InitializeComponent();
             binds = new BindingSource();
             Load_data();
+            try
+            {
+                listrule = db.RULEs.ToList();
+
+                foreach (var name_rule in listrule)
+                {
+                    cbbId_rule.Items.Add(name_rule.NAME);
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
         string name;
         public frmuser(string giatri) : this()
@@ -40,7 +53,8 @@ namespace Manager_device
         private void frmuser_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'manager_deviceDataSet1.RULE' table. You can move, or remove it, as needed.
-            this.rULETableAdapter.Fill(this.manager_deviceDataSet1.RULE);
+            //  this.rULETableAdapter.Fill(this.manager_deviceDataSet1.RULE);
+            
 
         }
         void Load_data()
@@ -67,7 +81,7 @@ namespace Manager_device
             user.ID_USER = txtId_user.Text;
             user.NAME = txtName.Text;
             user.PASSWORD = getMD5(txtPass.Text);
-            user.ID_RULE = cbbId_rule.Text;
+            user.ID_RULE =listrule[cbbId_rule.SelectedIndex].ID_RULE;
             db.USERs.Add(user);
             db.SaveChanges();
             Load_data();
