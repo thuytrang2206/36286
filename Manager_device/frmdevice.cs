@@ -83,7 +83,7 @@ namespace Manager_device
         void Load_Data(string textSearch = "")
         {
             var listd = from d in db.DEVICEs where ( d.NAME.Contains(textSearch)) select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN,d.QUANTITY, d.ID_GROUP, d.ID_USER };
-            var temp = listd.ToList();
+            
             binds.DataSource = listd.ToList();
             dtgvdevice.DataSource = binds;
         }
