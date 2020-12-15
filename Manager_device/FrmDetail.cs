@@ -169,8 +169,8 @@ namespace Manager_device
         }
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime date = dateTimePicker1.Value;
-            var list_date= from d in db.HISTORies where(d.UPDATE_CHECK== date) select new { d.ID_HISTORY, d.ID_DEVICE, d.UPDATE_CHECK, d.INFOCHECK, d.NOTE, d.QUANTITY, d.STATUS, d.ID_USER };
+            DateTime date = dateTimePicker1.Value.Date;
+            var list_date= from d in db.HISTORies where( date== d.UPDATE_CHECK) select new { d.ID_HISTORY, d.ID_DEVICE, d.UPDATE_CHECK, d.INFOCHECK, d.NOTE, d.QUANTITY, d.STATUS, d.ID_USER };
             binds.DataSource= list_date.ToList();
             dataGridView1.DataSource = binds;
         }
