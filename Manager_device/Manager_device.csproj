@@ -187,6 +187,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Manager_deviceDataSet.xsc">
       <DependentUpon>Manager_deviceDataSet.xsd</DependentUpon>
@@ -280,6 +281,7 @@
       <DependentUpon>Manager_deviceModel.edmx</DependentUpon>
       <LastGenOutput>Manager_deviceModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\umc-vi-t-nam-logo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

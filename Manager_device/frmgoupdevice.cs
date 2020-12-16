@@ -22,7 +22,6 @@ namespace Manager_device
             InitializeComponent();
             Form1 frm = new Form1();
             binds = new BindingSource();
-           
             Load1();
         }
         string name;
@@ -62,16 +61,11 @@ namespace Manager_device
        
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if(txtID.Text=="" || txtNAME.Text=="")
-            {
-                MessageBox.Show("ID_GROUP AND NAME IS NOT VALUES");
-
-            }
-            else
-            {
+           
                 try
                 {
-                    gr.ID_GROUP = txtID.Text;
+                    var id_group = Guid.NewGuid().ToString();
+                    gr.ID_GROUP = id_group;
                     gr.NAME = txtNAME.Text;
                     db.GROUP_DEVICE.Add(gr);
                     db.SaveChanges();
@@ -84,8 +78,6 @@ namespace Manager_device
                 {
                     Console.Write(ex.ToString());
                 }
-            }
-            
         }
         void Edit_Data()
         {
@@ -107,10 +99,10 @@ namespace Manager_device
         {
             string id = txtID.Text;
             gr = db.GROUP_DEVICE.First(p => p.ID_GROUP == id) ;
-            foreach(var d in db.DEVICEs.Where(f => f.ID_GROUP == id))
-            {
-                db.DEVICEs.Remove(d);
-            }
+            //foreach(var d in db.DEVICEs.Where(f => f.ID_GROUP == id))
+            //{
+            //    db.DEVICEs.Remove(d);
+            //}
             db.GROUP_DEVICE.Remove(gr);
             db.SaveChanges();
             Load1();

@@ -18,13 +18,15 @@ namespace Manager_device
         BindingSource binds;
         DEVICE dev = new DEVICE();
         USER user = new USER();
-        
+        HISTORY his = new HISTORY();
+        TaskType task;
         private List<GROUP_DEVICE> listGroupDevices1;
         public frmdevice()
         {
             InitializeComponent();
             binds = new BindingSource();
-            // frmMain frmm = new frmMain();
+            Load_Data1();
+          //  Enum.GetValues(typeof(TaskType));
             try
             {
                 listGroupDevices1 = db.GROUP_DEVICE.ToList();
@@ -36,7 +38,9 @@ namespace Manager_device
             }
             catch (Exception)
             {
+
             }
+            
         }
         string name;
         public frmdevice(string giatri) : this()
@@ -77,6 +81,7 @@ namespace Manager_device
         void Load_Data1()
         {
             var listd = from d in db.DEVICEs select new { d.ID_DEVICE, d.NAME, d.UPDATETIME, d.DATEPLAN,d.QUANTITY, d.ID_GROUP, d.ID_USER };
+            var temp = listd.ToList();
             binds.DataSource = listd.ToList();
             dtgvdevice.DataSource = binds;
         }
@@ -131,6 +136,7 @@ namespace Manager_device
             catch (Exception)
             {
             }
+            Load_Data1();
             Check_user();
         }
 
@@ -140,12 +146,11 @@ namespace Manager_device
             this.Hide();
             frm.ShowDialog();
         }
-
+        
         //private string Matang()
         //{
         //    string ma = "";
-
-        //    if (dtgvdevice.Rows.Count < 0)
+        //   if (dtgvdevice.RowCount < 0)
         //    {
         //        dev.ID_DEVICE = "DE0001";
         //    }
@@ -183,9 +188,9 @@ namespace Manager_device
                     else
 
                     {
-                        var id = Guid.NewGuid().ToString(); ;
-
-                        dev.ID_DEVICE = id;
+                        var id_device = Guid.NewGuid().ToString(); ;
+                        task = TaskType.New;
+                        dev.ID_DEVICE = id_device;
                         dev.NAME = txtName.Text;
                         dev.UPDATETIME = DateTime.Now;
                         dev.DATEPLAN = DateTime.Parse(dateTimePicker2.Value.ToString());
@@ -194,6 +199,14 @@ namespace Manager_device
                         dev.ENABLE = bool.Parse(cbbENABLE.Text);
                         dev.ID_USER = txtUser.Text;
                         db.DEVICEs.Add(dev);
+                        var id_his = Guid.NewGuid().ToString();
+                        his.ID_HISTORY = id_his;
+                        his.ID_DEVICE = dev.ID_DEVICE;
+                        his.QUANTITY = dev.QUANTITY;
+                        his.UPDATE_CHECK = dev.DATEPLAN;
+                        his.ID_USER = dev.ID_USER;
+                        his.STATUS = (int)task;
+                        db.HISTORies.Add(his);
                         db.SaveChanges();
                         Load_Data1();
                         Clear();
@@ -209,50 +222,74 @@ namespace Manager_device
 
         void Edit()
         {
-            string id = dtgvdevice.SelectedCells[0].OwningRow.Cells["ID_DEVICE"].Value.ToString();
-            dev = db.DEVICEs.Find(id);
-            dev.NAME = txtName.Text;
-            dev.DATEPLAN = DateTime.Parse(dateTimePicker2.Value.ToString());
-            dev.ID_GROUP = listGroupDevices1[cbbID_GROUP.SelectedIndex].ID_GROUP;
-            //dev.ENABLE = bool.Parse(cbbENABLE.Text);
-            db.SaveChanges();
-            Load_Data();
+            try
+            {
+                string id = dtgvdevice.SelectedCells[0].OwningRow.Cells["ID_DEVICE"].Value.ToString();
+                dev = db.DEVICEs.Find(id);
+                dev.NAME = txtName.Text;
+                dev.DATEPLAN = DateTime.Parse(dateTimePicker2.Value.ToString("MM-dd-yyyy"));
+                dev.QUANTITY = int.Parse(txtquantity.Text);
+                dev.ID_USER = txtUser.Text;
+                dev.ID_GROUP = listGroupDevices1[cbbID_GROUP.SelectedIndex].ID_GROUP;
+                dev.ENABLE =bool.Parse(cbbENABLE.Text);
+                task = TaskType.Update;
+                var id_his = Guid.NewGuid().ToString();
+                his.ID_HISTORY = id_his;
+                his.ID_DEVICE = id;
+                his.UPDATE_CHECK = dev.DATEPLAN;
+                his.QUANTITY = dev.QUANTITY;
+                his.ID_USER = dev.ID_USER;
+                his.STATUS = (int)task;
+                db.HISTORies.Add(his);
+                db.SaveChanges();
+               Load_Data1();
+            }
 
+          catch(Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
         }
-
+        
+           
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Edit();
-            Clear();
+        }
+        int selecIndex;
+       
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(dev.ENABLE== false)
+                {
+                    string id = txtId.Text;
+                    dev = db.DEVICEs.First(p => p.ID_DEVICE == id);
+                    db.DEVICEs.Remove(dev);
+                    db.SaveChanges();
+                    Load_Data1();
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+           
         }
         private void dtgvdevice_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtId.Enabled = false;
-            int selecIndex = e.RowIndex;
+            selecIndex = e.RowIndex;
             DataGridViewRow row = dtgvdevice.Rows[selecIndex];
             txtId.Text = row.Cells[0].Value.ToString();
             txtName.Text = row.Cells[1].Value.ToString();
             dateTimePicker2.Value = DateTime.Parse(row.Cells[3].Value.ToString());
-            cbbID_GROUP.Text = row.Cells[4].Value.ToString();
-            txtUser.Text = row.Cells[5].Value.ToString();
+            txtquantity.Text = row.Cells[4].Value.ToString();
+            //cbbID_GROUP.Text = row.Cells[5].Value.ToString();
+            txtUser.Text = row.Cells[6].Value.ToString();
         }
-
-        private void btnDel_Click(object sender, EventArgs e)
-        {
-            string id = txtId.Text;
-            dev = db.DEVICEs.Where(d => d.ID_DEVICE == id).SingleOrDefault();
-            if (dev.ENABLE == true)
-            {
-                db.DEVICEs.Remove(dev);
-                db.SaveChanges();
-                Load_Data();
-            }
-            else
-            {
-                MessageBox.Show("Not delete value!");
-            }
-        }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             Load_Data(txtSearch.Text.Trim());

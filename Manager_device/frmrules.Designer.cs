@@ -147,6 +147,7 @@
             this.Controls.Add(this.btnExit);
             this.Name = "frmrules";
             this.Text = "frmrules";
+            this.Load += new System.EventHandler(this.frmrules_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvrule)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
